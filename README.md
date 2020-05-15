@@ -1,7 +1,3 @@
-# fsalonapp
-
-Official App of Fashion TV™ (F Salon).
-
 ## Getting Started
 
 This project is a starting point for a Flutter application.
