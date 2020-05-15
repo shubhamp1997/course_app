@@ -17,7 +17,8 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  sqflite:
+  splashscreen: ^1.2.0
+  custom_navigator: ^0.2.0
   flutter:
     sdk: flutter
 
@@ -26,6 +27,9 @@ dependencies:
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
+
+  cloud_firestore:
+
   flutter_test:
     sdk: flutter
 
@@ -42,6 +46,10 @@ flutter:
   uses-material-design: true
 
   fonts:
+   - family: Raleway
+     fonts:
+       - asset: fonts/Raleway-Regular.ttf
+       - asset: fonts/Raleway-Bold.ttf
    - family: Gobold
      fonts:
        - asset: fonts/Gobold-Regular.ttf

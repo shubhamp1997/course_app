@@ -1,9 +1,31 @@
 import '../main.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class Nutrition extends StatefulWidget {
   @override
   _NutritionState createState() => _NutritionState();
+}
+
+
+Widget listItem (BuildContext context, DocumentSnapshot document){
+  return FlatButton(
+    child: Container(
+      margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        shape: BoxShape.rectangle,
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+      ),
+      child: ListTile(
+        leading: Image.asset(document['imageName'],height: 100,width: 80),
+        title:Text(document['name']),
+        subtitle: Text(document['description']),
+      ),
+    ),
+  );
 }
 
 class _NutritionState extends State<Nutrition> {
@@ -27,74 +49,42 @@ class _NutritionState extends State<Nutrition> {
               ),
             ),
           ),),
-        body: getListView()
+        body: StreamBuilder(
+          stream: Firestore.instance.collection('newtest').snapshots(),
+          builder:(context, snapshot) {
+            if (!snapshot.hasData) return const Text('Loading...');
+            return ListView.builder(
+                itemCount: snapshot.data.documents.length,
+                itemBuilder: (context, index) =>
+                  listItem(context, snapshot.data.documents[index]),
+            );
+          }
+          )
     );
   }
 }
 
-Widget getListView()
-{
-  var listView=ListView(
-      children: <Widget>[
-        Container(
-          margin: EdgeInsets.fromLTRB(10,5,10,5),
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-          ),
-          child: ListTile(
-            leading: Image.asset('images/orane.png',height: 100,width: 80),
-            title:Text("Orane International School of Beauty & Wellness"),
-            subtitle: Text("Cosmetology,aesthetic , hair , human nutrition and dietetics, spa , beauty"),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(10,5,10,5),
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-          ),
-          child: ListTile(
-            leading: Image.asset('images/ignou.png',height: 100,width: 80),
-            title:Text("IGNOU - Indira Gandhi National Open University, Ahmedabad"),
-            subtitle: Text("Diploma in Nutrition and health Education"),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(10,5,10,5),
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-          ),
-          child: ListTile(
-            leading: Image.asset('images/99.png',height: 100,width: 80, color: Colors.grey[900],),
-            title:Text("99 Studio"),
-            subtitle: Text("beauty therapy ,makeup ,nail art ,mehndi ,hair ,cosmetology ,skincare, dieting and nutrition Salon management"),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(10,5,10,5),
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-          ),
-          child: ListTile(
-            leading: Image.asset('images/ICS.png',height: 100,width: 80),
-            title:Text("International Cosmetology School"),
-            subtitle: Text("beauty, hair, makeup, nail, nutrician, dietician,spa"),
-          ),
-        ),
-      ]
-  );
-  return listView;
-}
 
+
+
+
+//Widget getListView()
+//{
+//  var listView=ListView(
+//      children: <Widget>[
+//        listItem('orane.png',
+//            "Orane International School of Beauty & Wellness", "Cosmetology,aesthetic , hair , human nutrition and dietetics, spa , beauty"),
+//        listItem('ignou.png',
+//            "IGNOU - Indira Gandhi National Open University, Ahmedabad",
+//            "Diploma in Nutrition and health Education"),
+//        listItem('99.png',
+//            "99 Studio", "beauty therapy ,makeup ,nail art ,mehndi ,hair ,cosmetology ,skincare, dieting and nutrition Salon management"),
+//        listItem('ICS.png',
+//            "International Cosmetology School",
+//            "beauty, hair, makeup, nail, nutrician, dietician,spa")
+//      ]
+//  );
+//  return listView;
+//}
+//
 

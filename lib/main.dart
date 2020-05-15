@@ -1,10 +1,80 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'Home.dart';
 import 'Search.dart';
 import 'AboutUs.dart';
 
 
-void main() => runApp(MyApp());
+
+void main() {
+  runApp(
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+          home: SplashScreen()
+      )
+  );
+}
+
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 3), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => MyHomePage()),
+      );
+    });
+    deactivate();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            Container(
+              decoration: BoxDecoration(color: Color.fromRGBO(74, 65, 177, 1)),
+            ),
+            Container(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.only(top: 230, left: 65),
+              child: Text(
+                'The',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+            Container(
+              alignment: Alignment.topCenter,
+              padding: EdgeInsets.only(top: 250),
+              child: Text(
+                'Course App',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -12,8 +82,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'F SALON ACADEMY',
-      home: MyHomePage(title: 'F SALON ACADEMY'),
+      title: 'Course App',
+      home: MyHomePage(title: 'Course App'),
     );
   }
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "165752678030",
+    "firebase_url": "https://courseapp-76cf2.firebaseio.com",
+    "project_id": "courseapp-76cf2",
+    "storage_bucket": "courseapp-76cf2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:165752678030:android:b9e3cd3f8caf11d1510bdf",
+        "android_client_info": {
+          "package_name": "com.shubham.fsalonapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "165752678030-235hldhl8048qtemn1efsauodvsrvi50.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAZgUeJmvmGOsOWfY-LQhcUtgtoVSEFfc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "165752678030-235hldhl8048qtemn1efsauodvsrvi50.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
