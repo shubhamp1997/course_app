@@ -1,6 +1,7 @@
 import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fsalonapp/CourseDetailsPage.dart';
 
 
 class Nutrition extends StatefulWidget {
@@ -25,6 +26,12 @@ Widget listItem (BuildContext context, DocumentSnapshot document){
         subtitle: Text(document['description']),
       ),
     ),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => CourseDetailsPage()),
+      );
+    },
   );
 }
 

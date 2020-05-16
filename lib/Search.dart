@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'MakeUp.dart';
+import 'package:fsalonapp/Categories/MakeUp.dart';
 import 'Categories/Nutrition.dart';
 import 'Categories/Nail.dart';
 import 'Categories/Hair.dart';
